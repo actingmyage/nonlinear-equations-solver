@@ -1,5 +1,5 @@
 from util import *
-
+from tabulate import tabulate
 
 def bisection_method(f, a, b, epsilon):
     """
@@ -15,11 +15,10 @@ def bisection_method(f, a, b, epsilon):
     """
     pros: simple and reliable, has absolute convergence
     cons: too slow, if the interval contains several roots, it is unknown which root it will find :>
+    convergence: linear convergence
     """
 
-    #TODO finish writing this method => print table with results
     #TODO move the check outside the function
-    #TODO print convergence speed
     if f(a) * f(b) >= 0:
         raise ValueError("The function must have different signs at the ends of the interval!")
 
@@ -40,6 +39,6 @@ def bisection_method(f, a, b, epsilon):
             a = x0
 
     print("Root was not found in " + str(iterations) + " iterations!")
-    print("Returning (a_last + b_last) / 2")
-    print_load_stub()
+    print("Returning (a_last + b_last) / 2. It's equals " + (a + b / 2))
+
     return (a + b) / 2

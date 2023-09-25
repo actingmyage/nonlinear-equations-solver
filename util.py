@@ -1,14 +1,4 @@
-import time
-
 from functions import FUNCTIONS
-
-
-def print_load_stub():
-    print(".")
-    time.sleep(0.5)
-    print("..")
-    time.sleep(0.5)
-    print("...")
 
 
 def choose_function():
