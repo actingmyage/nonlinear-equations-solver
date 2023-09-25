@@ -1,4 +1,4 @@
-from util import print_load_stub
+from util import *
 
 
 def bisection_method(f, a, b, epsilon):

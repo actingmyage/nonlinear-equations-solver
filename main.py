@@ -1,3 +1,7 @@
+from util import *
+from methods import *
+
+
 def lab_info():
     lab_name = "Laboratory work №2"
     author = "Chesnokov Arkady"
@@ -18,3 +22,11 @@ def lab_info():
 
 
 lab_info()
+
+print("<input>")
+function = choose_function()
+a, b = choose_interval_borders()
+e = choose_epsilon()
+print("<input> [end]")
+
+print(bisection_method(function[1], a, b, e))
