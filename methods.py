@@ -9,7 +9,7 @@ def bisection_method(f, a, b, epsilon):
     :param a: left border of the interval
     :param b: right border of the interval
     :param epsilon: accuracy
-    :return: single solution, otherwise, if no such solution was found, a list consisting of a and b
+    :return: root of equation
     """
 
     """
@@ -18,7 +18,7 @@ def bisection_method(f, a, b, epsilon):
     convergence: linear convergence
     """
 
-    #TODO move the check outside the function
+    # TODO move the check outside the function
     if f(a) * f(b) >= 0:
         raise ValueError("The function must have different signs at the ends of the interval!")
 
@@ -28,9 +28,12 @@ def bisection_method(f, a, b, epsilon):
 
         solution = f(x0)
         iterations += 1
+
         if abs(solution) <= epsilon:
+
             print("Root was found in " + str(iterations) + " iterations!")
             print("Root = " + str(solution))
+
             return solution
 
         if f(a) * f(x0) < 0:

@@ -24,9 +24,11 @@ def lab_info():
 lab_info()
 
 print("<input>")
+
 function = choose_function()
-a, b = choose_interval_borders()
-e = choose_epsilon()
+a, b     = choose_interval_borders()
+e        = choose_epsilon()
+
 print("<input> [end]")
 
 print(bisection_method(function[1], a, b, e))
