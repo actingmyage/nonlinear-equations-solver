@@ -22,6 +22,8 @@ def bisection_method(f, a, b, epsilon):
     if f(a) * f(b) >= 0:
         raise ValueError("The function must have different signs at the ends of the interval!")
 
+    table_data = [["a", "b", "x", "f(a)", "f(b)", "f(x)", "|a-b|"]]
+
     iterations = 1
     while abs(b - a) > epsilon:
         x0 = (a + b) / 2
@@ -29,10 +31,15 @@ def bisection_method(f, a, b, epsilon):
         solution = f(x0)
         iterations += 1
 
+        table_data.append([a, b, x0, f(a), f(b), f(x0), abs(a-b)])
+
         if abs(solution) <= epsilon:
 
             print("Root was found in " + str(iterations) + " iterations!")
             print("Root = " + str(solution))
+
+            table = tabulate(table_data, headers="firstrow", tablefmt="fancy_grid")
+            print(table)
 
             return solution
 
@@ -41,7 +48,10 @@ def bisection_method(f, a, b, epsilon):
         else:
             a = x0
 
+    table = tabulate(table_data, headers="firstrow", tablefmt="fancy_grid")
+    print(table)
+
     print("Root was not found in " + str(iterations) + " iterations!")
-    print("Returning (a_last + b_last) / 2. It's equals " + (a + b / 2))
+    print("Returning (a_last + b_last) / 2. It's equals " + str(a + b / 2))
 
     return (a + b) / 2
