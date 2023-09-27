@@ -8,7 +8,7 @@ def verify_interval(f, a, b):
     :param f: function
     :param a: left border of interval
     :param b: right border of interval
-    :return:  interval containing roots or error message
+    :return: interval containing roots or error message
     """
 
     if a >= b:
@@ -16,19 +16,21 @@ def verify_interval(f, a, b):
 
     print("Checking the interval for the presence of roots...")
 
-    if f(a) * f(b) > 0:
-        fa = f(a)
-        fb = f(b)
+    fa = f(a)
+    fb = f(b)
 
-        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
+    print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
+
+    if f(a) * f(b) > 0:
         print("=> f(a) * f(b) > 0!")
 
         delta = 0.0001
 
-        warning = """
-            We reduce the interval until we find the roots or until the difference between a and b becomes less than 
-            Δ =    
-        """ + str(delta)
+        warning = \
+            f"""
+            We reduce the interval until we find the roots or until the difference 
+            between a and b becomes less than Δ = {delta}
+            """
 
         print(warning)
 
@@ -44,39 +46,31 @@ def verify_interval(f, a, b):
 
             print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
 
-            if f(a) * f(b) < 0:
-                print("We have decreased the interval " + str(number_of_decreases) +
-                      " times and found several roots [maybe several]")
+            if f(a) * f(b) <= 0:
 
-                print("New borders: a = " + str(a) + ", b = " + str(b))
-                return a, b
+                if f(a) * f(b) < 0:
 
-            elif f(a) * f(b) == 0:
-                print("We have decreased the interval " + str(number_of_decreases) +
-                      " times and found one root")
+                    message = \
+                        f"""
+                        We have decreased the interval {number_of_decreases} 
+                        times and found several roots [maybe several]    
+                        """
+                    print(message)
 
-                print("New borders: a = " + str(a) + ", b = " + str(b))
+                else:
+                    print(f"We have decreased the interval {number_of_decreases} times and found one root")
+
+                print(f"New borders: a = {a}, b = {b}")
                 return a, b
 
         raise Exception("Error: There are no roots on this interval!")
 
     elif f(a) * f(b) == 0:
-        fa = f(a)
-        fb = f(b)
-
-        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
         print("There is one root on a given interval!")
-
-        return a, b
-
     else:
-        fa = f(a)
-        fb = f(b)
-
-        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
         print("There are several roots on a given interval!")
 
-        return a, b
+    return a, b
 
 
 def bisection_method(f, a, b, epsilon):
@@ -109,10 +103,9 @@ def bisection_method(f, a, b, epsilon):
         solution = f(x0)
         iterations += 1
 
-        table_data.append([a, b, x0, f(a), f(b), f(x0), abs(a-b)])
+        table_data.append([a, b, x0, f(a), f(b), f(x0), abs(a - b)])
 
         if abs(solution) <= epsilon:
-
             print("Root was found in " + str(iterations) + " iterations!")
             print("Root = " + str(solution))
 
