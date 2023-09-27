@@ -47,16 +47,13 @@ def verify_interval(f, a, b):
             print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
 
             if f(a) * f(b) <= 0:
-
                 if f(a) * f(b) < 0:
-
                     message = \
                         f"""
                         We have decreased the interval {number_of_decreases} 
                         times and found several roots [maybe several]    
                         """
                     print(message)
-
                 else:
                     print(f"We have decreased the interval {number_of_decreases} times and found one root")
 
