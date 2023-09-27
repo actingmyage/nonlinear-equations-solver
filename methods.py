@@ -20,29 +20,29 @@ def verify_interval(f, a, b):
         fa = f(a)
         fb = f(b)
 
-        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
         print("=> f(a) * f(b) > 0!")
 
-        epsilon = 0.0001
+        delta = 0.0001
 
         warning = """
             We reduce the interval until we find the roots or until the difference between a and b becomes less than 
-            ε =    
-        """ + str(epsilon)
+            Δ =    
+        """ + str(delta)
 
         print(warning)
 
         number_of_decreases = 0
-        while abs(b - a) > epsilon:
-            a += epsilon
-            b -= epsilon
+        while abs(b - a) > delta:
+            a += delta
+            b -= delta
 
             number_of_decreases += 1
 
             fa = f(a)
             fb = f(b)
 
-            print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+            print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
 
             if f(a) * f(b) < 0:
                 print("We have decreased the interval " + str(number_of_decreases) +
@@ -58,13 +58,13 @@ def verify_interval(f, a, b):
                 print("New borders: a = " + str(a) + ", b = " + str(b))
                 return a, b
 
-        raise Exception("There are no roots on this interval!")
+        raise Exception("Error: There are no roots on this interval!")
 
     elif f(a) * f(b) == 0:
         fa = f(a)
         fb = f(b)
 
-        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
         print("There is one root on a given interval!")
 
         return a, b
@@ -73,7 +73,7 @@ def verify_interval(f, a, b):
         fa = f(a)
         fb = f(b)
 
-        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print(str(fa) + " * " + str(f(b)) + " = " + str(fa * fb))
         print("There are several roots on a given interval!")
 
         return a, b
@@ -130,6 +130,6 @@ def bisection_method(f, a, b, epsilon):
     print(table)
 
     print("Root was not found in " + str(iterations) + " iterations!")
-    print("Returning (a_last + b_last) / 2. It's equals " + str(a + b / 2))
+    print("Returning (a_last + b_last) / 2. It's equals " + str((a + b) / 2))
 
     return (a + b) / 2
