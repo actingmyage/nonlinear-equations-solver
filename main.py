@@ -1,5 +1,6 @@
 from util import *
 from methods import *
+from graph import *
 
 
 def lab_info():
@@ -32,5 +33,7 @@ e        = choose_epsilon()
 print("<input> [end]")
 
 a, b = verify_interval(function[1], a, b)
+
+plot_graph(function[1], function[0], a, b)
 
 print(bisection_method(function[1], a, b, e))
