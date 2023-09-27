@@ -31,4 +31,6 @@ e        = choose_epsilon()
 
 print("<input> [end]")
 
+a, b = verify_interval(function[1], a, b)
+
 print(bisection_method(function[1], a, b, e))

@@ -1,5 +1,83 @@
-from util import *
 from tabulate import tabulate
+
+
+def verify_interval(f, a, b):
+    """
+    Checks for the presence of a root at a given interval
+
+    :param f: function
+    :param a: left border of interval
+    :param b: right border of interval
+    :return:  interval containing roots or error message
+    """
+
+    if a >= b:
+        raise Exception("Error: The left border of the interval must be less than the right border!")
+
+    print("Checking the interval for the presence of roots...")
+
+    if f(a) * f(b) > 0:
+        fa = f(a)
+        fb = f(b)
+
+        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print("=> f(a) * f(b) > 0!")
+
+        epsilon = 0.0001
+
+        warning = """
+            We reduce the interval until we find the roots or until the difference between a and b becomes less than 
+            ε =    
+        """ + str(epsilon)
+
+        print(warning)
+
+        number_of_decreases = 0
+        while abs(b - a) > epsilon:
+            a += epsilon
+            b -= epsilon
+
+            number_of_decreases += 1
+
+            fa = f(a)
+            fb = f(b)
+
+            print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+
+            if f(a) * f(b) < 0:
+                print("We have decreased the interval " + str(number_of_decreases) +
+                      " times and found several roots [maybe several]")
+
+                print("New borders: a = " + str(a) + ", b = " + str(b))
+                return a, b
+
+            elif f(a) * f(b) == 0:
+                print("We have decreased the interval " + str(number_of_decreases) +
+                      " times and found one root")
+
+                print("New borders: a = " + str(a) + ", b = " + str(b))
+                return a, b
+
+        raise Exception("There are no roots on this interval!")
+
+    elif f(a) * f(b) == 0:
+        fa = f(a)
+        fb = f(b)
+
+        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print("There is one root on a given interval!")
+
+        return a, b
+
+    else:
+        fa = f(a)
+        fb = f(b)
+
+        print(str(fa) + "* " + str(f(b)) + " = " + str(fa * fb))
+        print("There are several roots on a given interval!")
+
+        return a, b
+
 
 def bisection_method(f, a, b, epsilon):
     """
