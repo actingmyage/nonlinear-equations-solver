@@ -11,3 +11,27 @@ FUNCTIONS = [
     ('x^2 + 3 * x - 2', lambda x: x ** 2 + 3 * x - 2, lambda x: 2*x + 3, lambda x: 2),
     ('sin(x) + 0.1 * x**2', lambda x: sin(x) + 0.1 * x**2, lambda x: cos(x) + (x / 5), lambda x: 1/5 * sin(x))
 ]
+
+
+def phi_of_x_lam(f, lam, x):
+    """
+    Used in the simple iteration method
+
+    :param f: f(x)
+    :param lam: lambda
+    :param x: x
+    :return: φ(x)
+    """
+    return x + lam * f(x)
+
+
+def phi_of_x_lam_der(f, lam, x):
+    """
+    Used in the simple iteration method
+
+    :param f: f'(x)
+    :param lam: lambda
+    :param x: x
+    :return: φ'(x)
+    """
+    return 1 + lam * f(x)

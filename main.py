@@ -33,4 +33,4 @@ print("<input> [end]")
 
 a, b = verify_interval(function[1], a, b)
 
-print(secant_method(function, a, b, e))
+print(simple_iteration_method(function, a, b, e))
