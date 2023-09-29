@@ -18,8 +18,24 @@ def phi_2(x1, x2):
     return 0.7 - 0.2 * x1 ** 2 - 0.1 * x1 * x2
 
 
+def d_phi_11(x1):
+    return -0.2 * x1
+
+
+def d_phi_12(x2):
+    return -0.4 * x2
+
+
+def d_phi_21(x1, x2):
+    return -0.4 * x1 - 0.1 * x2
+
+
+def d_phi_22(x1):
+    return -0.1 * x1
+
+
 SYSTEMS = [
-    [[equation_1, equation_2], [phi_1, phi_2]]
+    [[equation_1, equation_2], [phi_1, phi_2], []]
 ]
 
 
@@ -29,5 +45,5 @@ def system_simple_iteration_method(sys, epsilon):
     num1 = float(input("Enter the first number: "))
     num2 = float(input("Enter the second number: "))
 
-    
+
 
