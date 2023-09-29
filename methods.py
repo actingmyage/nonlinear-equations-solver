@@ -188,14 +188,13 @@ def secant_method(f, a, b, epsilon, max_iterations=50):  # TODO estimate the num
 
     # for f() documentation see functions.py
     necessity_1 = check_derivative_sign(f[2], a, b)
-    necessity_2 = check_derivative_sign(f[3], a, b)
 
     try:
-        necessity_3 = float(inspect.getsource(f[2])) != 0  # getting the text representation of a lambda expression
+        necessity_2 = float(inspect.getsource(f[2])) != 0  # getting the text representation of a lambda expression
     except ValueError:
-        necessity_3 = True  # TODO refactor using sumpy!
+        necessity_2 = True  # TODO refactor using sumpy!
 
-    if necessity_1 & necessity_2 & necessity_3:
+    if necessity_1 & necessity_2:
         print("The convergence conditions = TRUE!")
 
         default_h = 0.005
