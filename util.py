@@ -6,7 +6,7 @@ def choose_function():
 
     for i in range(len(FUNCTIONS)):
         number_of_function = str(i + 1)
-        print('[' + number_of_function + '] ' + FUNCTIONS[i][0] + "\n")
+        print('[' + number_of_function + '] ' + FUNCTIONS[i] + "\n")
 
     choice = int(input("choice: ")) - 1
     function = FUNCTIONS[choice]

@@ -1,15 +1,19 @@
-"""
-0 - text representation of the function
-1 - the function itself
-2 - first derivative function
-3 - second derivative function
-"""
-from math import sin, cos
+import sympy as sp
+
+
+class Function:
+    def __init__(self, string_function):
+        self.function = sp.sympify(string_function)
+
+    def __call__(self, x_value) -> float:
+        x = sp.symbols('x')
+        return self.function.subs(x, x_value)
+
 
 FUNCTIONS = [
-    ('x^3 - x + 4', lambda x: x**3 - x + 4, lambda x: 3 * x ** 2 - 1, lambda x: 6 * x),
-    ('x^2 + 3 * x - 2', lambda x: x ** 2 + 3 * x - 2, lambda x: 2*x + 3, lambda x: 2),
-    ('sin(x) + 0.1 * x**2', lambda x: sin(x) + 0.1 * x**2, lambda x: cos(x) + (x / 5), lambda x: 1/5 * sin(x))
+    'x ** 3 - x + 4',
+    'x ** 2 + 3 * x - 2',
+    'sin(x) + 0.1 * x ** 2'
 ]
 
 

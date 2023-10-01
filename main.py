@@ -25,12 +25,12 @@ lab_info()
 
 print("<input>")
 
-function = choose_function()
+f = Function(choose_function())
 a, b     = choose_interval_borders()
 e        = choose_epsilon()
 
 print("<input> [end]")
 
-a, b = verify_interval(function[1], a, b)
+a, b = verify_interval(f, a, b)
 
-print(simple_iteration_method(function, a, b, e))
+bisection_method(f, a, b, e)
