@@ -17,6 +17,66 @@ FUNCTIONS = [
 ]
 
 
+def verify_interval(f, a, b):
+    """
+    :param f: function
+    :param a: left border of interval
+    :param b: right border of interval
+    :return: interval containing roots or error message
+    """
+
+    if a >= b:
+        raise Exception("Error: The left border of the interval must be less than the right border!")
+
+    print("Checking the interval for the presence of roots...")
+    fa = f(a)
+    fb = f(b)
+    print(f"{fa} * {fb} = {fa * fb}")
+
+    if f(a) * f(b) > 0:
+
+        delta = 0.01
+        warning = \
+            f"""
+            We reduce the interval until we find the roots or until the difference 
+            between a and b becomes less than Δ = {delta}
+            """
+
+        print(warning)
+
+        decreases = 0
+        while abs(b - a) > delta:
+            a += delta
+            b -= delta
+            fa = f(a)
+            fb = f(b)
+            decreases += 1
+            print(f"{fa} * {fb} = {fa * fb}")
+
+            if f(a) * f(b) <= 0:
+                if f(a) * f(b) < 0:
+                    message = \
+                        f"""
+                        We have decreased the interval {decreases} 
+                        times and found several roots [maybe several]    
+                        """
+                    print(message)
+                else:
+                    print(f"We have decreased the interval {decreases} times and found one root")
+
+                print(f"New borders: a = {a}, b = {b}")
+                return a, b
+
+        raise Exception("Error: There are no roots on this interval!")
+
+    elif f(a) * f(b) == 0:
+        print("There is one root on a given interval!")
+    else:
+        print("There are roots on a given interval!")
+
+    return a, b
+
+
 def phi_of_x_lam(f, lam, x):
     """
     Used in the simple iteration method
