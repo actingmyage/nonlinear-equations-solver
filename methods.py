@@ -133,6 +133,7 @@ def bisection_method(f, a, b, epsilon):
 
 def check_derivative_sign(f, a, b):
     critical_points = []
+
     for point in [a, b]:
         if f(point) == 0:
             critical_points.append(point)
@@ -144,6 +145,7 @@ def check_derivative_sign(f, a, b):
             print(point)
 
     intervals = zip([a] + critical_points, critical_points + [b])
+
     for interval in intervals:
         fa = f(interval[0])
         fb = f(interval[1])
