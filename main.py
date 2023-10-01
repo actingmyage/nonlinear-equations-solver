@@ -1,3 +1,4 @@
+from functions import *
 from util import *
 from methods import *
 
@@ -33,4 +34,4 @@ print("<input> [end]")
 
 a, b = check_interval(f, a, b)
 
-bisection_method(f, a, b, e)
+check_derivative_sign(f, a, b)

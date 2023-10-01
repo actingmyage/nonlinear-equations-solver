@@ -1,13 +1,18 @@
 import sympy as sp
+import numpy as np
 
 
 class Function:
     def __init__(self, string_function):
         self.function = sp.sympify(string_function)
+        self.string_function = string_function
 
     def __call__(self, x_value) -> float:
         x = sp.symbols('x')
         return self.function.subs(x, x_value)
+
+    def __str__(self):
+        return self.string_function
 
 
 FUNCTIONS = [
@@ -17,7 +22,7 @@ FUNCTIONS = [
 ]
 
 
-def check_interval(f, a, b):
+def check_interval(f, a, b) -> tuple[float, float]:
     """
     :param f: function
     :param a: left border of interval
@@ -67,6 +72,36 @@ def check_interval(f, a, b):
         print("There are roots on a given interval!")
 
     return a, b
+
+
+def check_derivative_sign(f, a, b) -> bool:
+    x = sp.symbols('x')
+
+    f_prime = sp.diff(f, x)
+    f_double_prime = sp.diff(f_prime, x)
+
+    x_values = np.linspace(a, b, 10)
+
+    sign_f_prime = sp.sign(f_prime.subs(x, x_values[0]))
+    sign_f_double_prime = sp.sign(f_double_prime.subs(x, x_values[0]))
+
+    sign_changed = False
+
+    for x_val in x_values:
+        curr_sign_f_prime = sp.sign(f_prime.subs(x, x_val))
+        curr_sign_f_double_prime = sp.sign(f_double_prime.subs(x, x_val))
+        print(f"At x = {x_val}: f' = {curr_sign_f_prime}, f'' = {curr_sign_f_double_prime}")
+
+        if curr_sign_f_prime != sign_f_prime or curr_sign_f_double_prime != sign_f_double_prime:
+            sign_changed = True
+            break
+
+    if sign_changed:
+        print("The sign of the first or second derivative changes on the interval.")
+        return False
+    else:
+        print("The sign of the first and second derivatives remains the same on the interval.")
+        return True
 
 
 def phi_of_x_lam(f, lam, x):
