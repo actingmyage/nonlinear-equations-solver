@@ -17,7 +17,7 @@ FUNCTIONS = [
 ]
 
 
-def verify_interval(f, a, b):
+def check_interval(f, a, b):
     """
     :param f: function
     :param a: left border of interval
@@ -36,11 +36,7 @@ def verify_interval(f, a, b):
     if f(a) * f(b) > 0:
 
         delta = 0.01
-        warning = \
-            f"""
-            We reduce the interval until we find the roots or until the difference 
-            between a and b becomes less than Δ = {delta}
-            """
+        warning = f"We reduce the interval until find the roots or until the difference between a and b becomes less than Δ = {delta}"
 
         print(warning)
 
@@ -55,11 +51,7 @@ def verify_interval(f, a, b):
 
             if f(a) * f(b) <= 0:
                 if f(a) * f(b) < 0:
-                    message = \
-                        f"""
-                        We have decreased the interval {decreases} 
-                        times and found several roots [maybe several]    
-                        """
+                    message = f"We have decreased the interval {decreases} times and found roots"
                     print(message)
                 else:
                     print(f"We have decreased the interval {decreases} times and found one root")
