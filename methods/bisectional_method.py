@@ -3,7 +3,7 @@ from tabulate import tabulate
 TABLE_DATA = [["a", "b", "x", "f(a)", "f(b)", "f(x)", "|a-b|"]]
 
 
-def bisection_method(f, a, b, epsilon):
+def bisection_method(f, a, b, epsilon) -> float:
     """
     The bisection method for finding the root of an equation.
 
