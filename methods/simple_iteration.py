@@ -1,8 +1,6 @@
 from tabulate import tabulate
 from functions import *
 
-from scipy.optimize import minimize_scalar
-
 
 TABLE_DATA = [["x_(i)", "x_(i+1)", "φ(x_(i+1))", "f(x_(i+1))", "|x_(i+1) - x_(i)|"]]
 
