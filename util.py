@@ -14,6 +14,19 @@ def choose_function():
     return function
 
 
+def choose_method(methods: list):
+    print("<Choose method!>")
+
+    for i in range(len(methods)):
+        number_of_method = str(i + 1)
+        print(f"[{number_of_method}] {methods[i].__name__}")
+
+    choice = int(input("choice: ")) - 1
+    method = methods[choice]
+
+    return method
+
+
 def choose_interval_borders():  # TODO if the root does not exist on this interval, change the interval
     print("<Choose interval borders!>")
 

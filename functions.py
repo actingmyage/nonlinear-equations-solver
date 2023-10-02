@@ -25,7 +25,7 @@ class Function:
 FUNCTIONS = [
     'x ** 3 - x + 4',
     'x ** 2 + 3 * x - 2',
-    'sin(x) + 0.1 * x ** 2'
+    'np.sin(x) + 0.1 * x ** 2'
 ]
 
 

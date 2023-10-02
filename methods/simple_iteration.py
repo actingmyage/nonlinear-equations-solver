@@ -69,7 +69,7 @@ def simple_iteration_method(f, a, b, epsilon, max_iterations=50):
         TABLE_DATA.append([x0, x_next, phi_of_x_lam(f, lam, x_next), f(x_next), abs(x_next - x0)])
 
         if abs(x_next - x0) <= epsilon:
-            print(f"Root was not found in {iterations} iterations!")
+            print(f"Root was found in {iterations} iterations!")
 
             table = tabulate(TABLE_DATA, headers="firstrow", tablefmt="fancy_grid")
             print(table)

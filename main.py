@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 from methods.simple_iteration import simple_iteration_method
 from util import *
 from functions import *
@@ -26,13 +29,26 @@ def lab_info():
 
 lab_info()
 
+METHODS = [bisection_method, secant_method, simple_iteration_method]
+
 print("<input>")
 
 f = Function(choose_function())
+m = choose_method(METHODS)
 a, b     = choose_interval_borders()
 e        = choose_epsilon()
-
 print("<input> [end]")
 
+x = np.linspace(a, b, 100)
+y = eval(str(f))
+
 a, b = check_interval(f, a, b)
-simple_iteration_method(f, a, b, e)
+
+plt.plot(x, y)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Plot of f(x)')
+plt.grid(True)
+plt.show()
+
+m(f, a, b, e)
