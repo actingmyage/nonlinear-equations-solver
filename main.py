@@ -1,6 +1,7 @@
-from functions import *
 from util import *
-from methods import *
+from functions import *
+from methods.secant_method import *
+from methods.bisectional_method import *
 
 
 def lab_info():
@@ -33,5 +34,4 @@ e        = choose_epsilon()
 print("<input> [end]")
 
 a, b = check_interval(f, a, b)
-
-check_derivative_sign(f, a, b)
+secant_method(f, a, b, e)

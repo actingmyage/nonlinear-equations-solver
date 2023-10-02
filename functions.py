@@ -1,5 +1,9 @@
 import sympy as sp
 import numpy as np
+import warnings
+import scipy.optimize as opt
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 class Function:
@@ -10,6 +14,9 @@ class Function:
     def __call__(self, x_value) -> float:
         x = sp.symbols('x')
         return self.function.subs(x, x_value)
+
+    def scalar_function(self):
+        return lambda x: self.__call__(x)
 
     def __str__(self):
         return self.string_function
@@ -102,6 +109,17 @@ def check_derivative_sign(f, a, b) -> bool:
     else:
         print("The sign of the first and second derivatives remains the same on the interval.")
         return True
+
+
+# FIXME
+# def derivative_not_zero_on_interval(f: Function, a: float, b: float) -> bool:
+#     result = opt.minimize_scalar(f.scalar_function(), bounds=(a, b))
+#     if result.success and result.fun != 0:
+#         print("The derivative is not equal to zero on the interval!")
+#         return True
+#     else:
+#         print("The derivative is zero on the interval!")
+#         return False
 
 
 def phi_of_x_lam(f, lam, x):
