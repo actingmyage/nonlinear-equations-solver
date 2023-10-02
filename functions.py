@@ -4,7 +4,7 @@ import warnings
 import scipy.optimize as opt
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-
+# TODO check that a function is continuous on an interval
 
 class Function:
     def __init__(self, string_function):
@@ -131,6 +131,8 @@ def phi_of_x_lam(f, lam, x):
     :param x: x
     :return: φ(x)
     """
+
+    print(f"{x} + {lam} * {f(x)} = {x + lam * f(x)}")
     return x + lam * f(x)
 
 
@@ -143,4 +145,8 @@ def phi_of_x_lam_der(f, lam, x):
     :param x: x
     :return: φ'(x)
     """
-    return 1 + lam * f(x)
+
+    x_sym = sp.symbols('x')
+    print(f"1 + {lam} * {f.subs(x_sym, x)} = {1 + lam * f.subs(x_sym, x)}")
+
+    return 1 + lam * f.subs(x_sym, x)

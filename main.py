@@ -1,3 +1,4 @@
+from methods.simple_iteration import simple_iteration_method
 from util import *
 from functions import *
 from methods.secant_method import *
@@ -34,4 +35,4 @@ e        = choose_epsilon()
 print("<input> [end]")
 
 a, b = check_interval(f, a, b)
-secant_method(f, a, b, e)
+simple_iteration_method(f, a, b, e)
