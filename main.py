@@ -1,9 +1,7 @@
-import numpy as np
 import matplotlib.pyplot as plt
 
 from methods.simple_iteration import simple_iteration_method
-from util import *
-from functions import *
+from util.functions import *
 from methods.secant_method import *
 from methods.bisectional_method import *
 

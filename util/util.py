@@ -1,4 +1,4 @@
-from functions import FUNCTIONS
+from util.functions import FUNCTIONS
 
 
 def choose_function():

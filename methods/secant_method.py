@@ -1,7 +1,7 @@
 import sympy as sp
 
 from tabulate import tabulate
-from functions import check_derivative_sign
+from util.functions import check_derivative_sign
 
 
 TABLE_DATA = [["x_(i-1)", "x_(i)", "x_(i+1)", "f(x_(i+1))", "|x_(i+1) - x_(i)|"]]
