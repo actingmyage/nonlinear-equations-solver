@@ -132,7 +132,6 @@ def phi_of_x_lam(f, lam, x):
     :return: φ(x)
     """
 
-    print(f"{x} + {lam} * {f(x)} = {x + lam * f(x)}")
     return x + lam * f(x)
 
 

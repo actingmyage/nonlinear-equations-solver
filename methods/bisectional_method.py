@@ -31,7 +31,7 @@ def bisection_method(f, a, b, epsilon) -> float:
 
         if abs(solution) <= epsilon:
             print("Root was found in " + str(iterations) + " iterations!")
-            print("Root = " + str(solution))
+            print(f"Root ≈ {x0}")
 
             table = tabulate(TABLE_DATA, headers="firstrow", tablefmt="fancy_grid")
             print(table)

@@ -70,6 +70,7 @@ def simple_iteration_method(f, a, b, epsilon, max_iterations=50):
 
         if abs(x_next - x0) <= epsilon:
             print(f"Root was found in {iterations} iterations!")
+            print(f"Root ≈ {x_next}")
 
             table = tabulate(TABLE_DATA, headers="firstrow", tablefmt="fancy_grid")
             print(table)

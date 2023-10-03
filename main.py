@@ -4,6 +4,7 @@ from methods.simple_iteration import simple_iteration_method
 from util.functions import *
 from methods.secant_method import *
 from methods.bisectional_method import *
+from util.util import choose_function, choose_method, choose_interval_borders, choose_epsilon
 
 
 def lab_info():

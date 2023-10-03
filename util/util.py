@@ -27,7 +27,7 @@ def choose_method(methods: list):
     return method
 
 
-def choose_interval_borders():  # TODO if the root does not exist on this interval, change the interval
+def choose_interval_borders():
     print("<Choose interval borders!>")
 
     borders = input("a b: ").split()
