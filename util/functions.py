@@ -24,8 +24,7 @@ class Function:
 
 FUNCTIONS = [
     'x ** 3 - x + 4',
-    'x ** 2 + 3 * x - 2',
-    'np.sin(x) + 0.1 * x ** 2'
+    'x ** 2 + 3 * x - 2'
 ]
 
 
@@ -109,17 +108,6 @@ def check_derivative_sign(f, a, b) -> bool:
     else:
         print("The sign of the first and second derivatives remains the same on the interval.")
         return True
-
-
-# FIXME
-# def derivative_not_zero_on_interval(f: Function, a: float, b: float) -> bool:
-#     result = opt.minimize_scalar(f.scalar_function(), bounds=(a, b))
-#     if result.success and result.fun != 0:
-#         print("The derivative is not equal to zero on the interval!")
-#         return True
-#     else:
-#         print("The derivative is zero on the interval!")
-#         return False
 
 
 def phi_of_x_lam(f, lam, x):
